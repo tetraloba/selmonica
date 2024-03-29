@@ -2,8 +2,13 @@
 #include <opencv2/opencv.hpp>
 using namespace std;
 
-int main(){
-    const string V_PATH = "rtsp://2909:4228@192.168.0.151/live";
+int main(int argc, char *argv[]){
+    if (argc < 3) {
+        cerr << "too few arguments" << endl;
+        return 1;
+    }
+    const string V_PATH(argv[1]); // rtsp://2909:4228@192.168.0.151/live
+    const string IMG_PATH(argv[2]); // 出力する画像のファイルパス
 
     cv::VideoCapture cap(V_PATH);
     if (!cap.isOpened()) {
@@ -18,6 +23,6 @@ int main(){
         return 1;
     }
 
-    cv::imwrite("frame.jpg", frame);
+    cv::imwrite(IMG_PATH, frame);
     return 0;
 }
