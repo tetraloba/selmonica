@@ -56,3 +56,15 @@ USBカメラの選択は現時点で未対応。普通は`fswebcam`とか使っ�
 ```
 この例では毎分画像をキャプチャして`0000.jpg`, `0001.jpg`のように連番で保存する。
 `ffmpeg`コマンドでタイムラプス動画などを作る時に便利。
+
+## (おまけ) タイムラプス動画の作成
+`ffmpeg`コマンドを使う。無ければ`sudo apt install ffmpeg -y`などでインストールすること。
+例えば以下のように実行することで動画(.mp4)を生成できる。
+```bash
+ffmpeg -an -r 30 -i ~/selmonica/${DATE}/%04d.jpg -vcodec libx264 -pix_fmt yuv420p ~/selmonica/${DATE}.mp4;
+```
+`-an`はオーディオ無しの指定
+`-r 30`はフレームレートを30fpsに指定
+`-i ~/selmonica/${DATE}/%04d.jpg`でソースとなる画像を指定している。変数`${DATE}`には適切な値を入れること。(`20240404`等)
+`~/selmonica/${DATE}.mp4`は出力する動画のパスである。
+フルHDで1440フレームの場合、intel N100で1分弱かかった。
