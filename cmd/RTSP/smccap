@@ -1,6 +1,7 @@
 DIR="${HOME}/selmonica/";
 URL="rtsp://2909:4228@192.168.0.151/live";
 DATE=`date "+%Y%m%d"`;
+
 ls ${DIR}${DATE} |
 wc -l |
 xargs printf "${DIR}${DATE}/%04d.jpg" |
