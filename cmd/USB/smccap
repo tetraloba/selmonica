@@ -1,0 +1,6 @@
+DIR="${HOME}/selmonica/";
+DATE=`date "+%Y%m%d"`;
+ls ${DIR}${DATE} |
+wc -l |
+xargs printf "${DIR}${DATE}/%04d.jpg" |
+xargs fswebcam -r 1920x1080
