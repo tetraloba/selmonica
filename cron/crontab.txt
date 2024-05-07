@@ -1,4 +1,4 @@
 # make date dir for selmonica
-0 0 * * * ~/selmonica/smcmkdir
+0 0 * * * smcmkdir
 # capture per 1 minutes
-* * * * * ~/selmonica/smccap
+* * * * * smccap
