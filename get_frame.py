@@ -1,16 +1,18 @@
+from sys import argv
 import cv2
 
-V_PATH = "rtsp://2909:4228@192.168.0.151/live"
+VIDEO_PATH = argv[1]
+IMAGE_PATH = argv[2]
 
-cap = cv2.VideoCapture(V_PATH)
+cap = cv2.VideoCapture(VIDEO_PATH)
 if not cap.isOpened():
-    print("ERROR. Video Stream CAN'T BE OPEN")
+    print("OPEN ERROR.")
     exit()
 
 ret, frame = cap.read()
 if not ret:
-    print("No frame can read.")
+    print("READ ERROR.")
     exit()
-cv2.imwrite("frame.jpg", frame)
+cv2.imwrite(IMAGE_PATH, frame)
 
 exit()
