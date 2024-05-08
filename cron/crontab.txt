@@ -2,3 +2,5 @@
 0 0 * * * smcmkdir
 # capture per 1 minutes
 * * * * * smccap
+# encode per day
+0 0 * * * smcenc
