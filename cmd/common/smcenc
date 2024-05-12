@@ -1,5 +1,5 @@
 if test $# -lt 1; then
-    DATES=(`date "+%Y%m%d" --date '1 day ago'`)
+    DATES=`date "+%Y%m%d" --date '1 day ago'`
 else
     DATES=$@;
 fi;
