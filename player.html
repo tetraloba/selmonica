@@ -1,0 +1,38 @@
+<label>video path:<input id="path" type="text" value="video.mp4"></label>
+<label>frame rate:<input id="fps" type="text" value="30"></label>
+<button id="reload">reload</button> <br>
+<video id="video" src="./video.mp4" controls></video> <br>
+<button id="prev">prev</button>
+<button id="next">next</button>
+
+<script>
+    let path = document.getElementById('path');
+    let fps = document.getElementById('fps');
+    let reload_button = document.getElementById('reload');
+    let video = document.getElementById('video');
+    let prev_button = document.getElementById('prev');
+    let next_button = document.getElementById('next');
+
+    function prev(){
+        video.currentTime = Math.max(0, video.currentTime - 1 / fps.value);
+    }
+    function next(){
+        video.currentTime = Math.min(video.duration, video.currentTime + 1 / fps.value);
+    }
+
+    reload_button.addEventListener('click', function(){
+        video.src = path.value;
+        video.load();
+    });
+
+    video.onloadedmetadata = function(){
+        prev_button.addEventListener('click', prev);
+        next_button.addEventListener('click', next);
+    }
+
+    document.addEventListener('keydown', event => {
+        if (event.code === 'Comma') prev();
+        if (event.code === 'Period') next();
+    });
+</script>
+
