@@ -1,10 +1,11 @@
-DIR="${HOME}/selmonica/captured";
+ROOTDIR="${HOME}/selmonica"
+PHOTODIR="${ROOTDIR}/captured"
 URL=""; # e.g. rtsp://USER:PASSWORD@IPADDRESS/live
 DATE=`date "+%Y%m%d"`;
 
-mkdir -p ${DIR}/${DATE}
+mkdir -p ${PHOTODIR}/${DATE}
 
-ls ${DIR}/${DATE} |
+ls ${PHOTODIR}/${DATE} |
 wc -l |
-xargs printf "${DIR}/${DATE}/%04d.jpg" |
-xargs python3 ${DIR}/get_frame.py ${URL};
+xargs printf "${PHOTODIR}/${DATE}/%04d.jpg" |
+xargs python3 ${ROOTDIR}/get_frame.py ${URL};

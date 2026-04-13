@@ -1,9 +1,10 @@
-DIR="${HOME}/selmonica/captured";
+ROOTDIR="${HOME}/selmonica"
+PHOTODIR="${ROOTDIR}/captured"
 DATE=`date "+%Y%m%d"`;
 
-mkdir -p ${DIR}/${DATE}
+mkdir -p ${PHOTODIR}/${DATE}
 
-ls ${DIR}/${DATE} |
+ls ${PHOTODIR}/${DATE} |
 wc -l |
-xargs printf "${DIR}/${DATE}/%04d.jpg" |
+xargs printf "${PHOTODIR}/${DATE}/%04d.jpg" |
 xargs fswebcam -r 1920x1080
