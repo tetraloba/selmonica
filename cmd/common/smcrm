@@ -3,10 +3,11 @@ if test $# -lt 1; then
     exit;
 fi;
 
-DIR="${HOME}/selmonica/"
+PHOTODIR="${HOME}/selmonica/captured"
+VIDEODIR="${HOME}/selmonica/encoded"
 
 for DATE in $@; do
-    rm ${DIR}${DATE}.mp4 &&
-    rm ${DIR}${DATE}/* &&
-    rmdir ${DIR}${DATE};
+    rm ${VIDEODIR}/${DATE}.mp4 &&
+    rm ${PHOTODIR}/${DATE}/*.jpg &&
+    rmdir ${PHOTODIR}/${DATE};
 done;

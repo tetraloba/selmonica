@@ -1,4 +1,4 @@
-DIR="${HOME}/selmonica";
+DIR="${HOME}/selmonica/captured";
 URL=""; # e.g. rtsp://USER:PASSWORD@IPADDRESS/live
 DATE=`date "+%Y%m%d"`;
 

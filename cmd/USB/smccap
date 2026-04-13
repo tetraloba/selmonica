@@ -1,4 +1,4 @@
-DIR="${HOME}/selmonica";
+DIR="${HOME}/selmonica/captured";
 DATE=`date "+%Y%m%d"`;
 
 mkdir -p ${DIR}/${DATE}
