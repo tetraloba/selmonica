@@ -47,12 +47,15 @@ USBカメラの選択は現時点で未対応。普通は`fswebcam`とか使っ�
 ~~何故作ったのか~~ <- Raspberry Piで`fswebcam`が不安定だったため。
 
 ## 定期実行の登録
+`smccap`スクリプトを使うと楽
+```bash
+sudo install ~/selmonica/cmd/RTSP/smccap /usr/local/bin/smccap
+sudo vim /usr/local/bin/smccap # RTSPのURLを指定
+```
 `crontab -ie`を実行し、例えば以下のように登録する。
 ```crontab
-# make date dir for selmonica
-0 0 * * * mkdir ~/selmonica/`date "+\%Y\%m\%d"`;
 # capture per 1 minutes
-* * * * * DATE=`date "+\%Y\%m\%d"`; URL="URL_OF_RTSP"; ls ~/selmonica/${DATE} | wc -l | xargs printf "${HOME}/selmonica/${DATE}/\%04d.jpg" | xargs /usr/local/bin/get_frame ${URL};
+* * * * * smccap
 ```
 この例では毎分画像をキャプチャして`0000.jpg`, `0001.jpg`のように連番で保存する。
 `ffmpeg`コマンドでタイムラプス動画などを作る時に便利。

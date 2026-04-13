@@ -1,3 +1,0 @@
-DIR="${HOME}/selmonica/"
-
-mkdir ${DIR}`date "+%Y%m%d"`;
