@@ -74,8 +74,8 @@ ffmpeg -an -r 30 -i ~/selmonica/${DATE}/%04d.jpg -vcodec libx264 -pix_fmt yuv420
 ## (おまけ) 動画の作成とファイル(画像/動画)削除コマンド
 ### インストール
 ```bash
-sudo install ~/selmonica/smcenc.bash /usr/local/bin/smcenc
-sudo install ~/selmonica/smcrm.bash /usr/local/bin/smcrm
+sudo install ~/selmonica/cmd/common/smcenc /usr/local/bin/smcenc
+sudo install ~/selmonica/cmd/common/smcrm /usr/local/bin/smcrm
 ```
 ### 使い方
 以下のように実行することで、指定した日付の動画(.mp4)を生成できる。
