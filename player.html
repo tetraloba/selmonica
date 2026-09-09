@@ -19,14 +19,16 @@
     function next() {
         video.currentTime = Math.min(video.duration, video.currentTime + 1 / fps.value);
     }
-    function toggleFullscreen(){
+    function toggleFullscreen() {
         if (document.fullscreenElement) {
-            console.log("fullscreenElement exist.");
             document.exitFullscreen();
         } else {
-            console.log("fullscreenElement not found.")
             video.requestFullscreen();
         }
+    }
+    function toggleControlsVisibility() {
+        // video.controls = !video.controls;
+        video.classList.toggle('hide-controls');
     }
 
     reload_button.addEventListener('click', function(){
@@ -43,6 +45,20 @@
         if (event.code === 'Comma') prev();
         if (event.code === 'Period') next();
         if (event.code === 'KeyF') toggleFullscreen();
+        if (event.code === 'KeyC') toggleControlsVisibility();
     });
 </script>
+<style>
+    /* for Chromium */
+    video.hide-controls::-webkit-media-controls {
+      display: none !important;
+    }
+    
+    /* for Firefox */
+    video.hide-controls::-moz-media-controls {
+      display: none !important;
+    }
+</style>
+
+
 
