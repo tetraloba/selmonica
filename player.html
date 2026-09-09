@@ -13,11 +13,20 @@
     let prev_button = document.getElementById('prev');
     let next_button = document.getElementById('next');
 
-    function prev(){
+    function prev() {
         video.currentTime = Math.max(0, video.currentTime - 1 / fps.value);
     }
-    function next(){
+    function next() {
         video.currentTime = Math.min(video.duration, video.currentTime + 1 / fps.value);
+    }
+    function toggleFullscreen(){
+        if (document.fullscreenElement) {
+            console.log("fullscreenElement exist.");
+            document.exitFullscreen();
+        } else {
+            console.log("fullscreenElement not found.")
+            video.requestFullscreen();
+        }
     }
 
     reload_button.addEventListener('click', function(){
@@ -33,6 +42,7 @@
     document.addEventListener('keydown', event => {
         if (event.code === 'Comma') prev();
         if (event.code === 'Period') next();
+        if (event.code === 'KeyF') toggleFullscreen();
     });
 </script>
 
