@@ -1,13 +1,21 @@
-if test $# -lt 1; then
-    echo "too few arguments";
-    exit;
-fi;
-
 PHOTODIR="${HOME}/selmonica/captured"
 VIDEODIR="${HOME}/selmonica/encoded"
 
-for DATE in $@; do
-    rm ${VIDEODIR}/${DATE}.mp4 &&
-    rm ${PHOTODIR}/${DATE}/*.jpg &&
-    rmdir ${PHOTODIR}/${DATE};
-done;
+if test $# -lt 1; then
+    dates=($(find ${VIDEODIR} -maxdepth 1 -name '*.mp4' -exec basename {} '.mp4' \; | sort))
+    printf "%s\n" "${dates[@]}"
+    echo "these ${#dates[@]} dates will be deleted."
+    read -r -p "Do you want to continue? (type 'yes' to continue.): " yes_or_not
+    if test -z "${yes_or_not}" || test ${yes_or_not} != 'yes'; then
+        echo 'no file deleted. (canceled.)'
+        exit
+    fi
+else
+    dates=$@
+fi
+for date in ${dates[@]}; do
+    rm ${VIDEODIR}/${date}.mp4 &&
+    rm ${PHOTODIR}/${date}/*.jpg &&
+    rmdir ${PHOTODIR}/${date}
+done
+
